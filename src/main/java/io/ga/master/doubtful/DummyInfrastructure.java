@@ -36,37 +36,4 @@ public class DummyInfrastructure extends RuntimeInfrastructure {
     }
 
 
-
-//    @Override
-//    public InternalRuntime start(String workspaceId, Environment environment, MessageConsumer<MachineLogMessage> logger,
-//                                 Map<String, String> options) throws NotFoundException, ConflictException, ServerException {
-//
-//        Map<String, MachineRuntime> machines = new HashMap<>();
-//
-//        for(Map.Entry<String, ? extends ExtendedMachine> m : environment.getMachines().entrySet()) {
-//
-//            Map<String, ServerRuntime> servers = new HashMap<>();
-//
-//            for(Map.Entry<String, ? extends ServerConf2> s : m.getValue().getServers().entrySet()) {
-//                servers.put(s.getKey(), new ServerRuntimeImpl(""));
-//            }
-//
-//            Map<String, String> properties = new HashMap<>();
-//
-//            machines.put(m.getKey(), new MachineRuntimeImpl(properties, servers));
-//        }
-//
-//        return new InternalRuntime(machines);
-//    }
-//
-//    @Override
-//    public void stop(String workspaceId, Map<String, String> options) throws NotFoundException, ServerException {
-//
-//    }
-//
-//    @Override
-//    public void validate(Environment environment) throws ServerException {
-//
-//        LOG.info("Validating " + environment);
-//    }
 }
