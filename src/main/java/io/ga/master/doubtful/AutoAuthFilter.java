@@ -21,44 +21,42 @@ import java.security.Principal;
 public class AutoAuthFilter implements Filter {
 
 
-    @Override
-    public void init(FilterConfig filterConfig) throws ServletException {
+  @Override
+  public void init(FilterConfig filterConfig) throws ServletException {
+  }
+
+  @Override
+  public final void doFilter(ServletRequest request, ServletResponse response, FilterChain filterChain) throws IOException,
+                                                                                                               ServletException {
+    final HttpServletRequest httpRequest = (HttpServletRequest)request;
+
+    Subject subject = new SubjectImpl("che", "che", "dummy_token", false);
+
+    final EnvironmentContext environmentContext = EnvironmentContext.getCurrent();
+
+    try {
+      environmentContext.setSubject(subject);
+      filterChain.doFilter(addUserInRequest(httpRequest, subject), response);
+    } finally {
+      EnvironmentContext.reset();
     }
+  }
 
-    @Override
-    public final void doFilter(ServletRequest request, ServletResponse response, FilterChain filterChain) throws IOException,
-                                                                                                                 ServletException {
-        final HttpServletRequest httpRequest = (HttpServletRequest)request;
+  private HttpServletRequest addUserInRequest(final HttpServletRequest httpRequest, final Subject subject) {
+    return new HttpServletRequestWrapper(httpRequest) {
+      @Override
+      public String getRemoteUser() {
+        return subject.getUserName();
+      }
 
-        Subject subject = new SubjectImpl("che", "che", "dummy_token", false);
-//            HttpSession session = httpRequest.getSession();
-//            session.setAttribute("codenvy_user", subject);
+      @Override
+      public Principal getUserPrincipal() {
+        return () -> subject.getUserName();
+      }
+    };
+  }
 
-        final EnvironmentContext environmentContext = EnvironmentContext.getCurrent();
-
-        try {
-            environmentContext.setSubject(subject);
-            filterChain.doFilter(addUserInRequest(httpRequest, subject), response);
-        } finally {
-            EnvironmentContext.reset();
-        }
-    }
-
-    private HttpServletRequest addUserInRequest(final HttpServletRequest httpRequest, final Subject subject) {
-        return new HttpServletRequestWrapper(httpRequest) {
-            @Override
-            public String getRemoteUser() {
-                return subject.getUserName();
-            }
-
-            @Override
-            public Principal getUserPrincipal() {
-                return () -> subject.getUserName();
-            }
-        };
-    }
-
-    @Override
-    public void destroy() {
-    }
+  @Override
+  public void destroy() {
+  }
 }

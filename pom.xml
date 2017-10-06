@@ -11,7 +11,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <tomcat.version>8.0.28</tomcat.version>
-        <cheVersion>5.8.0-SNAPSHOT</cheVersion>
+        <cheVersion>5.19.0-SNAPSHOT</cheVersion>
         <dto-generator-out-directory>${project.build.directory}/generated-sources/dto/</dto-generator-out-directory>
     </properties>
     <dependencies>
@@ -22,7 +22,13 @@
             <artifactId>javax.websocket-api</artifactId>
             <version>1.1</version>
         </dependency>
-
+<!--
+        <dependency>
+            <groupId>javax.persistence</groupId>
+            <artifactId>persistence-api</artifactId>
+            <version>1.0.2</version>
+        </dependency>
+-->
         <dependency>
             <groupId>org.apache.tomcat.embed</groupId>
             <artifactId>tomcat-embed-core</artifactId>
@@ -38,6 +44,23 @@
             <artifactId>tomcat-embed-logging-juli</artifactId>
             <version>${tomcat.version}</version>
         </dependency>
+<!--
+      <dependency>
+        <groupId>org.eclipse.persistence</groupId>
+        <artifactId>org.eclipse.persistence.core</artifactId>
+      </dependency>
+      <dependency>
+        <groupId>org.eclipse.persistence</groupId>
+        <artifactId>org.eclipse.persistence.jpa</artifactId>
+      </dependency>
+-->
+        <!--
+
+      <dependency>
+        <groupId>org.eclipse.persistence</groupId>
+        <artifactId>javax.persistence</artifactId>
+        <version>2.2.0</version>
+      </dependency>
         <dependency>
             <groupId>org.apache.tomcat.embed</groupId>
             <artifactId>tomcat-embed-jasper</artifactId>
@@ -58,13 +81,12 @@
             <artifactId>tomcat-jsp-api</artifactId>
             <version>${tomcat.version}</version>
         </dependency>
-
+-->
         <dependency>
             <groupId>org.apache.tomcat</groupId>
             <artifactId>tomcat-dbcp</artifactId>
             <version>${tomcat.version}</version>
         </dependency>
-
         <!-- https://mvnrepository.com/artifact/com.h2database/h2 -->
         <dependency>
             <groupId>com.h2database</groupId>
@@ -103,8 +125,8 @@
             <artifactId>javax.persistence</artifactId>
             <version>2.1.1</version>
         </dependency>
-
 -->
+
 
         <dependency>
             <groupId>org.eclipse.che.core</groupId>
@@ -141,11 +163,13 @@
             <artifactId>che-core-api-user</artifactId>
             <version>${cheVersion}</version>
         </dependency>
+
         <dependency>
             <groupId>org.eclipse.che.core</groupId>
             <artifactId>che-core-api-workspace</artifactId>
             <version>${cheVersion}</version>
         </dependency>
+
         <dependency>
             <groupId>org.eclipse.che.core</groupId>
             <artifactId>che-core-api-ssh</artifactId>
@@ -202,8 +226,8 @@
                     <assembleDirectory>target</assembleDirectory>
                     <programs>
                         <program>
-                            <mainClass>io.ga.CheAgentMain</mainClass>
-                            <name>webapp</name>
+                            <mainClass>io.ga.master.CheMasterMain</mainClass>
+                            <name>chemaster</name>
                         </program>
                     </programs>
                 </configuration>
@@ -216,19 +240,20 @@
                     </execution>
                 </executions>
             </plugin>
-
+<!--
             <plugin>
                 <groupId>org.eclipse.che.core</groupId>
                 <artifactId>che-core-api-dto-maven-plugin</artifactId>
                 <version>${cheVersion}</version>
                 <executions>
                     <execution>
-                        <phase>process-sources</phase>
+                        <phase>devAgentProcess-sources</phase>
                         <goals>
                             <goal>generate</goal>
                         </goals>
                     </execution>
                 </executions>
+
                 <dependencies>
                     <dependency>
                         <groupId>${project.groupId}</groupId>
@@ -236,6 +261,7 @@
                         <version>${project.version}</version>
                     </dependency>
                 </dependencies>
+
                 <configuration>
                     <dtoPackages>
                         <package>io.ga</package>
@@ -245,7 +271,7 @@
                     <impl>server</impl>
                 </configuration>
             </plugin>
-
+-->
         </plugins>
     </build>
 </project>

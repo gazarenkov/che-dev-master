@@ -11,17 +11,16 @@ import java.util.List;
  */
 public class MasterBootstrap extends CheBootstrap {
 
+  @Override
+  protected List<Module> getModules() {
 
-    @Override
-    protected List<Module> getModules() {
+    List<Module> m = super.getModules();
 
-        List<Module> m = super.getModules();
+    m.add(new MasterModule());
 
-        m.add(new MasterModule());
+    return m;
 
-        return m;
-
-    }
+  }
 
 
 }
