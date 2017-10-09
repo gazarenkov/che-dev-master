@@ -1,9 +1,11 @@
 package io.ga.master;
 
-import io.ga.master.doubtful.AutoAuthFilter;
-
 import com.google.inject.servlet.GuiceFilter;
-
+import io.ga.master.doubtful.AutoAuthFilter;
+import java.io.File;
+import javax.servlet.ServletContextEvent;
+import javax.websocket.DeploymentException;
+import javax.websocket.server.ServerContainer;
 import org.apache.catalina.Context;
 import org.apache.catalina.Wrapper;
 import org.apache.catalina.startup.Tomcat;
@@ -18,13 +20,6 @@ import org.everrest.websockets.WSConnectionTracker;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.servlet.ServletContextEvent;
-import javax.websocket.DeploymentException;
-import javax.websocket.server.ServerContainer;
-import java.io.File;
-import java.io.IOException;
-import java.util.Enumeration;
-
 
 /**
  * @author gazarenkov
@@ -36,17 +31,17 @@ public class CheMasterMain {
   public CheMasterMain() {
 
     ClassLoader cl = this.getClass().getClassLoader();
-    System.out.println(" >>>>>>>>>>>>>>> Classloader : " + cl);
+    System.out.println("Classloader : " + cl);
 
-    try {
-      Enumeration i = cl.getResources("");
-      while(i.hasMoreElements()) {
-        System.out.println(" >>>>>>>>>>>>>>> RES : " + i.nextElement());
-      }
-
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
+//    try {
+//      Enumeration i = cl.getResources("");
+//      while(i.hasMoreElements()) {
+//        System.out.println(" >>>>>>>>>>>>>>> RES : " + i.nextElement());
+//      }
+//
+//    } catch (IOException e) {
+//      e.printStackTrace();
+//    }
   }
 
   public static void main(String[] args) throws Exception {
