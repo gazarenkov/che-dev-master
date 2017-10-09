@@ -22,13 +22,6 @@
             <artifactId>javax.websocket-api</artifactId>
             <version>1.1</version>
         </dependency>
-<!--
-        <dependency>
-            <groupId>javax.persistence</groupId>
-            <artifactId>persistence-api</artifactId>
-            <version>1.0.2</version>
-        </dependency>
--->
         <dependency>
             <groupId>org.apache.tomcat.embed</groupId>
             <artifactId>tomcat-embed-core</artifactId>
@@ -44,44 +37,6 @@
             <artifactId>tomcat-embed-logging-juli</artifactId>
             <version>${tomcat.version}</version>
         </dependency>
-<!--
-      <dependency>
-        <groupId>org.eclipse.persistence</groupId>
-        <artifactId>org.eclipse.persistence.core</artifactId>
-      </dependency>
-      <dependency>
-        <groupId>org.eclipse.persistence</groupId>
-        <artifactId>org.eclipse.persistence.jpa</artifactId>
-      </dependency>
--->
-        <!--
-
-      <dependency>
-        <groupId>org.eclipse.persistence</groupId>
-        <artifactId>javax.persistence</artifactId>
-        <version>2.2.0</version>
-      </dependency>
-        <dependency>
-            <groupId>org.apache.tomcat.embed</groupId>
-            <artifactId>tomcat-embed-jasper</artifactId>
-            <version>${tomcat.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.tomcat</groupId>
-            <artifactId>tomcat-jasper</artifactId>
-            <version>${tomcat.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.tomcat</groupId>
-            <artifactId>tomcat-jasper-el</artifactId>
-            <version>${tomcat.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.tomcat</groupId>
-            <artifactId>tomcat-jsp-api</artifactId>
-            <version>${tomcat.version}</version>
-        </dependency>
--->
         <dependency>
             <groupId>org.apache.tomcat</groupId>
             <artifactId>tomcat-dbcp</artifactId>
@@ -93,13 +48,6 @@
             <artifactId>h2</artifactId>
             <version>1.4.193</version>
         </dependency>
-
-
-        <!-- dependency>
-            <groupId>com.google.inject.extensions</groupId>
-            <artifactId>guice-servlet</artifactId>
-            <version>4.0</version>
-        </dependency -->
 
         <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-simple -->
         <dependency>
@@ -119,13 +67,31 @@
             <artifactId>eclipselink</artifactId>
             <version>2.6.3</version>
         </dependency>
-
+-->
+<!--
         <dependency>
             <groupId>org.eclipse.persistence</groupId>
             <artifactId>javax.persistence</artifactId>
-            <version>2.1.1</version>
+            <version>2.2.0</version>
+           <scope>provided</scope>
         </dependency>
+
 -->
+
+     <dependency>
+        <groupId>org.eclipse.persistence</groupId>
+        <artifactId>org.eclipse.persistence.core</artifactId>
+        <version>2.7.0</version>
+      </dependency>
+
+
+
+      <dependency>
+        <groupId>org.eclipse.persistence</groupId>
+        <artifactId>org.eclipse.persistence.jpa</artifactId>
+        <version>2.7.0</version>
+      </dependency>
+
 
 
         <dependency>
@@ -181,29 +147,6 @@
             <version>${cheVersion}</version>
         </dependency>
 
-
-
-        <!-- dependency>
-            <groupId>org.eclipse.che.plugin</groupId>
-            <artifactId>che-plugin-docker-machine</artifactId>
-            <version>${cheVersion}</version>
-        </dependency -->
-
-        <!--
-        <dependency>
-            <groupId>org.eclipse.che.plugin</groupId>
-            <artifactId>che-plugin-docker-</artifactId>
-            <version>${cheVersion}</version>
-        </dependency>
-
-
-
-        <dependency>
-            <groupId>org.eclipse.che.core</groupId>
-            <artifactId>che-core-api-machine</artifactId>
-            <version>${cheVersion}</version>
-        </dependency>
--->
 
 
     </dependencies>
